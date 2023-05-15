@@ -30,10 +30,34 @@ export const useActionTx = (projectList: ProjectType[]) => {
       );
 
       if (result) {
-        const newActionResults = [...actionResults];
-        newActionResults[projectId] =
-          "Project Gateway is a groundbreaking solution designed to bridge the gap between Web 2.0 and Web 3.0, built on the Archway platform.";
-        setActionResults(newActionResults);
+        // const newActionResults = [...actionResults];
+        // newActionResults[projectId] =
+        //   "Project Gateway is a groundbreaking solution designed to bridge the gap between Web 2.0 and Web 3.0, built on the Archway platform.";
+        // setActionResults(newActionResults);
+
+        let intervalId: NodeJS.Timeout;
+        const fetchData = async () => {
+          try {
+            const response = await fetch(`http://localhost:3327/api/${projectId}`);
+            const data = await response.json();
+            const parsed = JSON.parse(data.data);
+
+            // Check if the fetch was successful
+            if (parsed && parsed.result) {
+              const newActionResults = [...actionResults];
+              newActionResults[projectId] = parsed.result;
+              setActionResults(newActionResults);
+
+              clearInterval(intervalId);
+            } else {
+              console.error("Not yet", projectId);
+            }
+          } catch (error) {
+            console.error("Fetch failed", projectId, error);
+          }
+        };
+        fetchData();
+        intervalId = setInterval(fetchData, 10000);
       } else {
         console.error("Error Tx");
       }
