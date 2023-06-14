@@ -15,6 +15,13 @@ export const useProjectQuery = () => {
     async (projectId: number) => {
       const copyClient = _.cloneDeep(cwClient);
       if (!copyClient) return null;
+
+      // TODO: remove
+      console.log(">>>", await copyClient.queryContractSmart(
+        ContractInfo.contractAddr,
+        { Config: {}, }
+      ));
+
       const result = await copyClient?.queryContractSmart(
         ContractInfo.contractAddr,
         {
@@ -29,11 +36,11 @@ export const useProjectQuery = () => {
           result.id === 1
             ? null
             : {
-                uniqueId: result.id,
-                description: result.description,
-                address: result.owner,
-                githubLink: result.github_addr,
-              }
+              uniqueId: result.id,
+              description: result.description,
+              address: result.owner,
+              githubLink: result.github_addr,
+            }
         );
       } else {
         console.error("Error");

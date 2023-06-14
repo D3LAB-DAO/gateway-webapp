@@ -1,22 +1,22 @@
 export const ConstantineInfo = {
   // Chain-id of the Cosmos SDK chain.
-  chainId: "constantine-2",
+  chainId: "constantine-3",
   // The name of the chain to be displayed to the user.
-  chainName: "Archway",
+  chainName: "Archway (Testnet)",
   // RPC endpoint of the chain.
-  rpc: "https://rpc.constantine-2.archway.tech",
+  rpc: "https://rpc.constantine.archway.tech",
   // rpc: "https://rpc-archway-testnet.mms.team",
   // REST endpoint of the chain.
-  rest: "https://api.constantine-2.archway.tech",
+  rest: "https://api.constantine.archway.tech",
   // rest: "https://api-archway-testnet.mms.team",
   // Staking coin information
   stakeCurrency: {
     // Coin denomination to be displayed to the user.
     coinDenom: "CONST",
     // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-    coinMinimalDenom: "uconst",
+    coinMinimalDenom: "aconst",
     // # of decimal points to convert minimal denomination to user-facing denomination.
-    coinDecimals: 6,
+    coinDecimals: 18,
     // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
     // You can get id from https://api.coingecko.com/api/v3/coins/list if it is listed.
     // coinGeckoId: ""
@@ -54,12 +54,12 @@ export const ConstantineInfo = {
       // Coin denomination to be displayed to the user.
       coinDenom: "CONST",
       // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-      coinMinimalDenom: "uconst",
+      coinMinimalDenom: "aconst",
       // # of decimal points to convert minimal denomination to user-facing denomination.
-      coinDecimals: 6,
+      coinDecimals: 18,
       // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
       // You can get id from https://api.coingecko.com/api/v3/coins/list if it is listed.
-      // coinGeckoId: ""
+      coinGeckoId: "constantine-network"
     },
   ],
   // List of coin/tokens used as a fee token in this chain.
@@ -73,7 +73,7 @@ export const ConstantineInfo = {
       coinDecimals: 6,
       // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
       // You can get id from https://api.coingecko.com/api/v3/coins/list if it is listed.
-      // coinGeckoId: ""
+      coinGeckoId: "constantine-network"
     },
   ],
   // (Optional) The number of the coin type.
@@ -87,15 +87,15 @@ export const ConstantineInfo = {
   // Currently, Keplr doesn't support dynamic calculation of the gas prices based on on-chain data.
   // Make sure that the gas prices are higher than the minimum gas prices accepted by chain validators and RPC/REST endpoint.
   gasPriceStep: {
-    low: 0.01,
-    average: 0.05,
-    high: 0.25,
+    low: 1000000000000,
+    average: 1500000000000,
+    high: 2000000000000
   },
-  //   faucets: ["https://faucet.constantine-2.archway.tech"],
+  //   faucets: ["https://faucet.constantine-3.archway.tech"],
   //   features: ["cosmwasm"],
 };
 
 export const ContractInfo = {
   contractAddr:
-    "archway1mc3t2yjqew2w5a5e4g3fjr475x3sx7k2kvkdvanarepegt8fzlrs6028mr",
+    "archway1vka55mzzjex9vp3dthkmqzmkk7udhh7t77m5tz7ypau8t652pf0sdvr5p8",
 };
