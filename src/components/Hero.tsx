@@ -7,7 +7,7 @@ const Hero = () => {
       <div
         className="w-screen md:h-[550px] bg-cover bg-center"
         style={{
-          backgroundImage: "url('/landscape(3).png')",
+          backgroundImage: "url('/landscape.webp')",
         }}
       >
         <div className="mx-auto text-center px-8 md:pt-32 md:pb-12 pt-20 pb-8">
