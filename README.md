@@ -13,6 +13,17 @@ Experience the integration of ChatGPT-4 with the blockchain through Gateway on A
 Begin by connecting your Keplr wallet, inputting the necessary demo information, and setting up your gateway point.
 This setup enables the deployment and utilization of ChatGPT-4 on the blockchain, showcasing the practical application of Gateway's innovative bridge between Web 2.0 and Web 3.0 technologies.
 
+### Requirements
+
+1. Run [Gateway Node](https://github.com/D3LAB-DAO/gateway-backend)
+```bash
+$ sh run_standalone.sh
+```
+2. Run [Gateway Bot](https://github.com/D3LAB-DAO/gateway-bot)
+```bash
+$ npm start
+```
+
 ### Upload Files
 - Title: Chat GPT-4 Bot
 - Description: Your friendly neighborhood ChatGPT.
