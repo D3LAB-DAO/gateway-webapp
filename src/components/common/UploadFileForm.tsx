@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useUploadFileTx } from "@/core/hooks/useUploadFileTx";
 import tw from "tailwind-styled-components";
 import { useForm } from "react-hook-form";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 import { z } from "zod";
 
@@ -25,6 +25,7 @@ const schema = z.object({
 const UploadFileForm = ({ user = {} }: UploadFileFormProps) => {
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -50,14 +51,35 @@ const UploadFileForm = ({ user = {} }: UploadFileFormProps) => {
   const errorState =
     errors.githubLink || errors.walletAddress || errors.description;
 
+  const placeholderValue = "https://raw.githubusercontent.com/D3LAB-DAO/gateway-backend/main/examples/chat.js";
+  useEffect(() => {
+    setValue("githubLink", placeholderValue);
+  }, [setValue]);
+
   return (
     <form onSubmit={handleSubmit(handleSave)}>
       <div className="text-left">
+        <InputContainer>
+          <InputHeader>🤖 Title</InputHeader>
+          <InputBox>
+            <Input
+              placeholder={"Chat GPT-4 Bot"}
+              disabled={true}
+            />
+          </InputBox>
+          {errors.walletAddress && (
+            <ErrorMessage>
+              <span className="font-semibold">Oh, snap!</span> Error Message
+            </ErrorMessage>
+          )}
+        </InputContainer>
+
         <InputContainer>
           <InputHeader>📝 Description</InputHeader>
           <InputBox>
             <Input
               placeholder="Write your Description here"
+              // disabled={true}
               {...register("description", {
                 required: true,
                 minLength: {
@@ -78,6 +100,7 @@ const UploadFileForm = ({ user = {} }: UploadFileFormProps) => {
           <InputBox>
             <Input
               placeholder="Write your Wallet Address here"
+              // disabled={true}
               {...register("walletAddress", {
                 required: true,
                 pattern: {
@@ -97,11 +120,12 @@ const UploadFileForm = ({ user = {} }: UploadFileFormProps) => {
           <InputHeader>😺 Github Link</InputHeader>
           <InputBox>
             <Input
-              placeholder="Write your Github Link here"
+              placeholder={placeholderValue}
+              disabled={true}
               {...register("githubLink", {
                 required: true,
                 pattern: {
-                  value: /^https?:\/\/github.com\/.+\/.+\/?$/,
+                  value: /^https:\/\/raw.githubusercontent.com\/.+\/.+\/?$/,
                   message: "Github Link is invalid",
                 },
               })}
@@ -110,7 +134,7 @@ const UploadFileForm = ({ user = {} }: UploadFileFormProps) => {
           {errors.githubLink && (
             <ErrorMessage>
               <span className="font-semibold">Oh, snap!</span> Please write{" "}
-              <b>https://github.com</b>
+              <b>https://raw.githubusercontent.com/~</b>
             </ErrorMessage>
           )}
         </InputContainer>
