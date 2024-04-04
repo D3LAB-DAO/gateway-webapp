@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import Button from "./Button";
 import { useRecoilValue } from "recoil";
@@ -13,10 +13,11 @@ type ActionProps = {
 
 const Action = ({ projectId, projectList }: ActionProps) => {
   const userAddress = useRecoilValue(getAddressAtom);
-  const [inputValues, setInputValues] = useState<string[]>(
+  const [inputValues, setInputValues] = useState<(string | undefined)[]>(
     Array(projectList.length + 1).fill("")
   );
   const [actionStates, setActionStates] = useState<boolean[]>([false]);
+  const [inputChanged, setInputChanged] = useState<boolean[]>(Array(projectList.length + 1).fill(false));
   const { executeAction, actionResults } = useActionTx(projectList);
 
   console.log("actionResults", actionResults);
@@ -28,6 +29,10 @@ const Action = ({ projectId, projectList }: ActionProps) => {
     const newInputValues = [...inputValues];
     newInputValues[index] = e.target.value;
     setInputValues(newInputValues);
+
+    const newInputChanged = [...inputChanged];
+    newInputChanged[index] = true;
+    setInputChanged(newInputChanged);
   };
 
   const handleAction = async (id: number) => {
@@ -35,12 +40,23 @@ const Action = ({ projectId, projectList }: ActionProps) => {
     newButtonStates[id] = !newButtonStates[id];
     setActionStates(newButtonStates);
 
+    // If input hasn't changed, set it to undefined
+    if (!inputChanged[id]) {
+      const newInputValues = [...inputValues];
+      newInputValues[id] = undefined;
+      setInputValues(newInputValues);
+    }
+
     await executeAction(userAddress, id, inputValues[id]);
 
     newButtonStates[id] = !newButtonStates[id];
     setActionStates(newButtonStates);
-    setInputValues(Array(projectList.length + 1).fill(""));
   };
+
+  useEffect(() => {
+    // This function body can be used to handle changes in actionResults.
+    // For now, it's empty because we don't have specific instructions on what to do.
+  }, [actionResults]);
 
   return (
     <>
