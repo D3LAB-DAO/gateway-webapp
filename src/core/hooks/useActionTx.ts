@@ -13,7 +13,11 @@ export const useActionTx = (projectList: ProjectType[]) => {
   );
 
   const executeAction = useCallback(
-    async (walletAddress: string, projectId: number, input: string) => {
+    async (walletAddress: string, projectId: number, input: string | undefined) => {
+      if (input === undefined) {
+        return null;
+      }
+
       if (!cwClient) return null;
       const copyClient = _.cloneDeep(cwClient);
 
@@ -39,11 +43,12 @@ export const useActionTx = (projectList: ProjectType[]) => {
           // setActionResults(newActionResults);
 
           let intervalId: NodeJS.Timeout;
+          let parsed;
           const fetchData = async () => {
             try {
               const response = await fetch(`http://localhost:3327/api/${projectId}`);
               const data = await response.json();
-              const parsed = JSON.parse(data.data);
+              parsed = JSON.parse(data.data);
 
               // Check if the fetch was successful
               if (parsed && parsed.result) {
@@ -57,10 +62,12 @@ export const useActionTx = (projectList: ProjectType[]) => {
               }
             } catch (error) {
               console.error("Fetch failed", projectId, error);
+            } finally {
+              // parsed = undefined;
             }
           };
           fetchData();
-          intervalId = setInterval(fetchData, 10000);
+          intervalId = setInterval(fetchData, 5000);
         } else {
           console.error("Error Tx");
         }

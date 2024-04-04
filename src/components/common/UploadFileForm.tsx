@@ -67,11 +67,6 @@ const UploadFileForm = ({ user = {} }: UploadFileFormProps) => {
               disabled={true}
             />
           </InputBox>
-          {errors.walletAddress && (
-            <ErrorMessage>
-              <span className="font-semibold">Oh, snap!</span> Error Message
-            </ErrorMessage>
-          )}
         </InputContainer>
 
         <InputContainer>

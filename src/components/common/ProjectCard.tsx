@@ -56,7 +56,7 @@ const ProjectCard = () => {
 
   useEffect(() => {
     queryProject(projectId);
-  }, [projectId]);
+  }, [queryProject, projectId]);
 
   if (newProjectInfo) projectList.push(newProjectInfo);
 
