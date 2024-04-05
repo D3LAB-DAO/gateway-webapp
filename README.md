@@ -15,6 +15,7 @@ This setup enables the deployment and utilization of ChatGPT-4 on the blockchain
 
 ### Requirements
 
+<!--
 1. Run [Gateway Node](https://github.com/D3LAB-DAO/gateway-backend)
 ```bash
 $ sh run_standalone.sh
@@ -23,6 +24,15 @@ $ sh run_standalone.sh
 ```bash
 $ npm start
 ```
+-->
+
+For a smooth demo experience on Chrome:
+
+1. Open Chrome settings at: [chrome://settings/content/siteDetails?site=https%3A%2F%2Fgateway-frontend.vercel.app](chrome://settings/content/siteDetails?site=https%3A%2F%2Fgateway-frontend.vercel.app).
+2. Allow `Insecure content` for full feature access.
+3. Refresh the page to apply changes.
+
+*Note: Allowing insecure content are needed to avoid Chrome's restrictions for a Mixed Content. (Mixed Content: The demo page was loaded over HTTPS, but requested a backend through HTTP.)*
 
 ### Upload Files
 - Title: Chat GPT-4 Bot
