@@ -46,7 +46,7 @@ export const useActionTx = (projectList: ProjectType[]) => {
           let parsed;
           const fetchData = async () => {
             try {
-              const response = await fetch(`http://localhost:3327/api/${projectId}`);
+              const response = await fetch(`http://spica.snu.ac.kr:3327/api/${projectId}`);
               const data = await response.json();
               parsed = JSON.parse(data.data);
 
