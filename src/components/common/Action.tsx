@@ -65,7 +65,8 @@ const Action = ({ projectId, projectList }: ActionProps) => {
         <InputBox>
           <Input
             onChange={e => handleChange(e, projectId)}
-            placeholder="Action this project!"
+            // placeholder="Action this project!"
+            placeholder='{"prompt": <INPUT>, "key": <OPENAI_API_KEY>}'
             value={inputValues[projectId]}
             type="text"
           />

@@ -16,30 +16,31 @@ export type ProjectType = {
 };
 
 const projectList: ProjectType[] = [
-  {
-    uniqueId: 1,
-    description:
-      "Character AI Bot is an innovative generative AI-driven solution that brings fictional characters to life.",
-    address: "archway1dqqfypr9a98czeh23a64eh6a0y7cqhycrzsm6a",
-    githubLink:
-      "https://raw.githubusercontent.com/D3LAB-DAO/gateway-backend/main/examples/character_ai_bot.js",
-  },
-  {
-    uniqueId: 2,
-    description:
-      "Auto Drawing is a cutting-edge generative AI solution that turns your textual descriptions into captivating visual content.",
-    address: "archway1cf6fpd3y2e3mv0m22zyuqm2tcqc3g498z0jw6u",
-    githubLink:
-      "https://raw.githubusercontent.com/D3LAB-DAO/gateway-backend/main/examples/auto_drawing.js",
-  },
-  {
-    uniqueId: 3,
-    description:
-      "Adrenaline-pumping virtual reality gun shooting game that transports you to a thrilling world of action and adventure.",
-    address: "archway1zk645ch525zrdgwfzmrq57x4urgmqk65n65v6q",
-    githubLink:
-      "https://raw.githubusercontent.com/D3LAB-DAO/gateway-backend/main/examples/vr_game.js",
-  },
+  // TODO: from DB
+  // {
+  //   uniqueId: 1,
+  //   description:
+  //     "Character AI Bot is an innovative generative AI-driven solution that brings fictional characters to life.",
+  //   address: "archway1dqqfypr9a98czeh23a64eh6a0y7cqhycrzsm6a",
+  //   githubLink:
+  //     "https://raw.githubusercontent.com/D3LAB-DAO/gateway-backend/main/examples/character_ai_bot.js",
+  // },
+  // {
+  //   uniqueId: 2,
+  //   description:
+  //     "Auto Drawing is a cutting-edge generative AI solution that turns your textual descriptions into captivating visual content.",
+  //   address: "archway1cf6fpd3y2e3mv0m22zyuqm2tcqc3g498z0jw6u",
+  //   githubLink:
+  //     "https://raw.githubusercontent.com/D3LAB-DAO/gateway-backend/main/examples/auto_drawing.js",
+  // },
+  // {
+  //   uniqueId: 3,
+  //   description:
+  //     "Adrenaline-pumping virtual reality gun shooting game that transports you to a thrilling world of action and adventure.",
+  //   address: "archway1zk645ch525zrdgwfzmrq57x4urgmqk65n65v6q",
+  //   githubLink:
+  //     "https://raw.githubusercontent.com/D3LAB-DAO/gateway-backend/main/examples/vr_game.js",
+  // },
 ];
 
 function removeDuplicateArray(arr: ProjectType[], key: string) {
